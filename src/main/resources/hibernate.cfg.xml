@@ -18,6 +18,6 @@
         <!--drop and recreate on sturtup database schema-->
         <property name="hbm2ddl.auto">create</property>
         <!--Names the annotated entity classes-->
-
+        <mapping class="ua.tim.hibernate.dto.UserDetails" />
     </session-factory>
 </hibernate-configuration>
