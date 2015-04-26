@@ -17,7 +17,13 @@ public class UserDetails {
     private String userName;
 
     @Embedded
-    @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET"))
+    @AttributeOverrides({
+        @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET_NAME")),
+        @AttributeOverride(name = "city", column = @Column(name = "HOME_CITY_NAME")),
+        @AttributeOverride(name = "state", column = @Column(name = "HOME_STATE_NAME")),
+        @AttributeOverride(name = "pincode", column = @Column(name = "HOME_PIN_CODE"))
+    })
+
     private Address homeAddress;
 
     @Embedded
