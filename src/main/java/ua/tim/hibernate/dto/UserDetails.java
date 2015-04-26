@@ -15,6 +15,9 @@ public class UserDetails {
     private int userId;
 
     private String userName;
+
+    private Address address;
+
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
     //@Lob
@@ -50,5 +53,13 @@ public class UserDetails {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
