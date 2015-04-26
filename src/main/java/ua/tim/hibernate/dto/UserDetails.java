@@ -14,7 +14,7 @@ public class UserDetails {
     private int userId;
 
     private String userName;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date joinedDate;
     private String description;
 
