@@ -22,7 +22,7 @@ public class HibernateTest {
         Address address = new Address();
         address.setCity("address city");
         address.setState("address state");
-        user.setAddress(address);
+        user.setHomeAddress(address);
 
         //read configuration file
         try{

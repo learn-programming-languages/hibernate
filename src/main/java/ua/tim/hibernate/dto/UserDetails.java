@@ -15,8 +15,13 @@ public class UserDetails {
     private int userId;
 
     private String userName;
+
     @Embedded
-    private Address address;
+    @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET"))
+    private Address homeAddress;
+
+    @Embedded
+    private Address officeAddress;
 
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
@@ -55,11 +60,19 @@ public class UserDetails {
         this.userName = userName;
     }
 
-    public Address getAddress() {
-        return address;
+    public Address getHomeAddress() {
+        return homeAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Address getOfficeAddress() {
+        return officeAddress;
+    }
+
+    public void setOfficeAddress(Address officeAddress) {
+        this.officeAddress = officeAddress;
     }
 }
