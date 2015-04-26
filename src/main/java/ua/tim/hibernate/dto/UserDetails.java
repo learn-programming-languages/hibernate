@@ -2,6 +2,8 @@ package ua.tim.hibernate.dto;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -23,16 +25,26 @@ public class UserDetails {
         @AttributeOverride(name = "state", column = @Column(name = "HOME_STATE_NAME")),
         @AttributeOverride(name = "pincode", column = @Column(name = "HOME_PIN_CODE"))
     })
-
     private Address homeAddress;
 
     @Embedded
     private Address officeAddress;
 
+    @ElementCollection
+    private Set<Address> listOfAddresses = new HashSet<Address>();
+
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
     //@Lob
     private String description;
+
+    public Set<Address> getListOfAddresses() {
+        return listOfAddresses;
+    }
+
+    public void setListOfAddresses(Set<Address> listOfAddresses) {
+        this.listOfAddresses = listOfAddresses;
+    }
 
     public Date getJoinedDate() {
         return joinedDate;

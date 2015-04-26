@@ -25,9 +25,12 @@ public class HibernateTest {
         user.setHomeAddress(address);
 
         Address officeAddress = new Address();
-        address.setCity("office address city");
-        address.setState("office address state");
+        officeAddress.setCity("office address city");
+        officeAddress.setState("office address state");
         user.setOfficeAddress(officeAddress);
+
+        user.getListOfAddresses().add(address);
+        user.getListOfAddresses().add(officeAddress);
         //read configuration file
         try{
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
