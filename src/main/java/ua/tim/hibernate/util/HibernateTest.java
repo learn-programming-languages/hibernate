@@ -3,6 +3,7 @@ package ua.tim.hibernate.util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ua.tim.hibernate.dto.Address;
 import ua.tim.hibernate.dto.UserDetails;
 
 import java.util.Date;
@@ -17,10 +18,11 @@ public class HibernateTest {
         user.setJoinedDate(new Date());
         user.setDescription("First User description");
 
-        UserDetails user2 = new UserDetails();
-        user2.setUserName("Second User");
-        user2.setJoinedDate(new Date());
-        user2.setDescription("Second User description");
+
+        Address address = new Address();
+        address.setCity("address city");
+        address.setState("address state");
+        user.setAddress(address);
 
         //read configuration file
         try{
@@ -29,7 +31,6 @@ public class HibernateTest {
             session.beginTransaction();
 
             session.save(user);
-            session.save(user2);
 
             session.getTransaction().commit();
             session.close();
