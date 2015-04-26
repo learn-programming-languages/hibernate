@@ -24,6 +24,7 @@ public class HibernateTest {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
+            session.close();
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
