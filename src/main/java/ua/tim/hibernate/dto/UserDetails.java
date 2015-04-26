@@ -11,13 +11,13 @@ import java.util.Date;
 @Table (name = "USER_DETAILS")
 public class UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
     private String userName;
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
-    @Lob
+    //@Lob
     private String description;
 
     public Date getJoinedDate() {

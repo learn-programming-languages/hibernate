@@ -34,10 +34,10 @@ public class HibernateTest {
             session.getTransaction().commit();
             session.close();
 
-            session = sessionFactory.openSession();
-            session.beginTransaction();
-            user = (UserDetails)session.get(UserDetails.class, 1);
-            System.out.println("user name retriving as: " + user.getUserName());
+//            session = sessionFactory.openSession();
+//            session.beginTransaction();
+//            user = (UserDetails)session.get(UserDetails.class, 1);
+//            System.out.println("user name retriving as: " + user.getUserName());
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
