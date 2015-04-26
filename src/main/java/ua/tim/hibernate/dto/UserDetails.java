@@ -31,6 +31,7 @@ public class UserDetails {
     private Address officeAddress;
 
     @ElementCollection
+    @JoinTable(name = "USER_ADDRESS")
     private Set<Address> listOfAddresses = new HashSet<Address>();
 
     @Temporal(TemporalType.DATE)
