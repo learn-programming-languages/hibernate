@@ -32,37 +32,22 @@ public class UserDetails {
     @Embedded
     private Address officeAddress;
 
-//    @ElementCollection
-//    @JoinTable(name = "USER_ADDRESS",
-//            joinColumns=@JoinColumn(name="USER_ID"))
-//    private Set<Address> listOfAddresses = new HashSet<Address>();
-
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ADDRESS",
             joinColumns=@JoinColumn(name="USER_ID"))
-    @GenericGenerator(name = "hilo-gener", strategy = "hilo")
-    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, type = @Type(type = "long"), generator = "hilo-gener")
-    private Collection<Address> listOfAddresses = new ArrayList<Address>();
+    private Set<Address> listOfAddresses = new HashSet<Address>();
+
 
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
     //@Lob
     private String description;
 
-//    public Set<Address> getListOfAddresses() {
-//        return listOfAddresses;
-//    }
-
-//    public void setListOfAddresses(Set<Address> listOfAddresses) {
-//        this.listOfAddresses = listOfAddresses;
-//    }
-
-
-    public Collection<Address> getListOfAddresses() {
+    public Set<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(Collection<Address> listOfAddresses) {
+    public void setListOfAddresses(Set<Address> listOfAddresses) {
         this.listOfAddresses = listOfAddresses;
     }
 
