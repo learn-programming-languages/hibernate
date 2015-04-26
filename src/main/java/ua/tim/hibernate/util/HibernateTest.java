@@ -11,14 +11,23 @@ import ua.tim.hibernate.dto.UserDetails;
 public class HibernateTest {
     public static void main(String[] args) {
         UserDetails user = new UserDetails();
-        user.setUserId(1);
-        user.setUserName("First User");
+        user.setUserId(4);
+        user.setUserName("Third User");
 
         //read configuration file
-        SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
+        try{
+            SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(user);
+            session.getTransaction().commit();
+        }
+        catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+
+
     }
 }

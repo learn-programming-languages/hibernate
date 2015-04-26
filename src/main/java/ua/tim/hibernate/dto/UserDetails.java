@@ -1,18 +1,21 @@
 package ua.tim.hibernate.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * Created by timofiybilyi on 4/25/15.
  */
-@Entity
+@Entity (name = "USER_DETAILS")
 public class UserDetails {
-    @Id
+
     private int userId;
 
-    private String userName;
 
+    private String userName;
+    @Id
+    @Column(name = "USER_ID")
     public int getUserId() {
         return userId;
     }
@@ -20,9 +23,9 @@ public class UserDetails {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
+    @Column(name="USER_NAME")
     public String getUserName() {
-        return userName;
+        return userName + "from getter";
     }
 
     public void setUserName(String userName) {
