@@ -1,9 +1,11 @@
 package ua.tim.hibernate.dto;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -30,21 +32,37 @@ public class UserDetails {
     @Embedded
     private Address officeAddress;
 
+//    @ElementCollection
+//    @JoinTable(name = "USER_ADDRESS",
+//            joinColumns=@JoinColumn(name="USER_ID"))
+//    private Set<Address> listOfAddresses = new HashSet<Address>();
+
     @ElementCollection
     @JoinTable(name = "USER_ADDRESS",
             joinColumns=@JoinColumn(name="USER_ID"))
-    private Set<Address> listOfAddresses = new HashSet<Address>();
+    @GenericGenerator(name = "hilo-gener", strategy = "hilo")
+    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, type = @Type(type = "long"), generator = "hilo-gener")
+    private Collection<Address> listOfAddresses = new ArrayList<Address>();
 
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
     //@Lob
     private String description;
 
-    public Set<Address> getListOfAddresses() {
+//    public Set<Address> getListOfAddresses() {
+//        return listOfAddresses;
+//    }
+
+//    public void setListOfAddresses(Set<Address> listOfAddresses) {
+//        this.listOfAddresses = listOfAddresses;
+//    }
+
+
+    public Collection<Address> getListOfAddresses() {
         return listOfAddresses;
     }
 
-    public void setListOfAddresses(Set<Address> listOfAddresses) {
+    public void setListOfAddresses(Collection<Address> listOfAddresses) {
         this.listOfAddresses = listOfAddresses;
     }
 
