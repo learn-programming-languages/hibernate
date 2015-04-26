@@ -13,16 +13,24 @@ import java.util.Date;
 public class HibernateTest {
     public static void main(String[] args) {
         UserDetails user = new UserDetails();
-        user.setUserId(1);
         user.setUserName("First User");
         user.setJoinedDate(new Date());
         user.setDescription("First User description");
+
+        UserDetails user2 = new UserDetails();
+        user2.setUserName("First User");
+        user2.setJoinedDate(new Date());
+        user2.setDescription("First User description");
+
         //read configuration file
         try{
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
+
             session.save(user);
+            session.save(user2);
+
             session.getTransaction().commit();
             session.close();
 
