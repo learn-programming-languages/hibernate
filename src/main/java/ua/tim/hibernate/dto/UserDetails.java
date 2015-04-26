@@ -31,7 +31,8 @@ public class UserDetails {
     private Address officeAddress;
 
     @ElementCollection
-    @JoinTable(name = "USER_ADDRESS")
+    @JoinTable(name = "USER_ADDRESS",
+            joinColumns=@JoinColumn(name="USER_ID"))
     private Set<Address> listOfAddresses = new HashSet<Address>();
 
     @Temporal(TemporalType.DATE)
