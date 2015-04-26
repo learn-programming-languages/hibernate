@@ -1,8 +1,8 @@
 package ua.tim.hibernate.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
+
 
 /**
  * Created by timofiybilyi on 4/25/15.
@@ -12,8 +12,27 @@ import javax.persistence.Table;
 public class UserDetails {
     @Id
     private int userId;
-
+    @Basic
     private String userName;
+    @Transient
+    private Date joinedDate;
+    private String description;
+
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(Date joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getUserId() {
         return userId;
