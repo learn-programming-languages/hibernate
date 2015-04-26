@@ -12,9 +12,9 @@ import java.util.Date;
 public class UserDetails {
     @Id
     private int userId;
-    @Basic
+
     private String userName;
-    @Transient
+    @Temporal(TemporalType.DATE)
     private Date joinedDate;
     private String description;
 
