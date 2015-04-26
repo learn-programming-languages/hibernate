@@ -18,9 +18,9 @@ public class HibernateTest {
         user.setDescription("First User description");
 
         UserDetails user2 = new UserDetails();
-        user2.setUserName("First User");
+        user2.setUserName("Second User");
         user2.setJoinedDate(new Date());
-        user2.setDescription("First User description");
+        user2.setDescription("Second User description");
 
         //read configuration file
         try{
