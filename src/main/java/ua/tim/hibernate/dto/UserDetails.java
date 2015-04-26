@@ -8,14 +8,14 @@ import java.util.Date;
  * Created by timofiybilyi on 4/25/15.
  */
 @Entity
-@Table (name = "USER_DETAILS")
+@Table(name = "USER_DETAILS")
 public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
     private String userName;
-
+    @Embedded
     private Address address;
 
     @Temporal(TemporalType.DATE)
