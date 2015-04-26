@@ -20,10 +20,14 @@ public class HibernateTest {
 
 
         Address address = new Address();
-        address.setCity("address city");
-        address.setState("address state");
+        address.setCity("home address city");
+        address.setState("home address state");
         user.setHomeAddress(address);
 
+        Address officeAddress = new Address();
+        address.setCity("office address city");
+        address.setState("office address state");
+        user.setOfficeAddress(officeAddress);
         //read configuration file
         try{
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
