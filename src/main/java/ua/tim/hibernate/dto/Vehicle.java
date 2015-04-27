@@ -1,9 +1,6 @@
 package ua.tim.hibernate.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by timofiybilyi on 4/27/15.
@@ -16,6 +13,7 @@ public class Vehicle {
     private int vehicleId;
     private String vehicleName;
     @ManyToOne
+    @JoinColumn (name = "USER_ID")
     private UserDetails userDetails;
 
     public UserDetails getUserDetails() {
