@@ -1,6 +1,8 @@
 package ua.tim.hibernate.dto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 /**
@@ -14,20 +16,20 @@ public class UserDetails {
     private int userId;
     private String userName;
 
-    @OneToOne
-    @JoinColumn(name = "VEHICLE_ID")
-    private Vehicle vehicle;
+   @OneToMany
+   @JoinTable (name = "USER_VEHICLE", joinColumns =@JoinColumn(name = "USER_ID"), inverseJoinColumns =@JoinColumn(name = "VEHICLE_ID") )
+    private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
     public int getUserId() {
         return userId;
     }
 
-    public Vehicle getVehicle() {
+    public Collection<Vehicle> getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicle(Collection<Vehicle> vehicles) {
+        this.vehicle = vehicles;
     }
 
     public void setUserId(int userId) {

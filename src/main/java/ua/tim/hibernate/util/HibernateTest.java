@@ -14,10 +14,14 @@ public class HibernateTest {
         UserDetails user = new UserDetails();
         user.setUserName("First User");
 
-        Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleName("car");
+        Vehicle vehicle1 = new Vehicle();
+        vehicle1.setVehicleName("car1");
+        Vehicle vehicle2 = new Vehicle();
+        vehicle2.setVehicleName("car2");
 
-        user.setVehicle(vehicle);
+        user.getVehicle().add(vehicle1);
+        user.getVehicle().add(vehicle2);
+
         //read configuration file
         try{
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
@@ -25,7 +29,8 @@ public class HibernateTest {
             session.beginTransaction();
 
             session.save(user);
-            session.save(vehicle);
+            session.save(vehicle1);
+            session.save(vehicle2);
             session.getTransaction().commit();
             session.close();
         }
