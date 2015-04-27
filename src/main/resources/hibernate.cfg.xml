@@ -19,5 +19,7 @@
         <property name="hbm2ddl.auto">create</property>
         <!--Names the annotated entity classes-->
         <mapping class="ua.tim.hibernate.dto.UserDetails" />
+        <mapping class="ua.tim.hibernate.dto.Vehicle" />
+
     </session-factory>
 </hibernate-configuration>
