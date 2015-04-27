@@ -16,7 +16,7 @@ public class UserDetails {
     private int userId;
     private String userName;
 
-    @ManyToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
     public int getUserId() {

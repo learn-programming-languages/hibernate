@@ -30,9 +30,8 @@ public class HibernateTest {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
 
-            session.save(user);
-            session.save(vehicle1);
-            session.save(vehicle2);
+            session.persist(user);
+
             session.getTransaction().commit();
             session.close();
         }
