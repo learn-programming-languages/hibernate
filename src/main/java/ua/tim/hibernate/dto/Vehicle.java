@@ -1,8 +1,12 @@
 package ua.tim.hibernate.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by timofiybilyi on 4/27/15.
@@ -15,16 +19,20 @@ public class Vehicle {
     private int vehicleId;
     private String vehicleName;
 
-    @ManyToMany (mappedBy = "vehicle")
-    private Collection<UserDetails> userDetails = new ArrayList<UserDetails>();
+    @ManyToOne
+    @NotFound( action = NotFoundAction.IGNORE)
+    private UserDetails user;
 
-    public Collection<UserDetails> getUserDetails() {
-        return userDetails;
-    }
 
-    public void setUserDetails(Collection<UserDetails> userDetails) {
-        this.userDetails = userDetails;
-    }
+    //private Collection<UserDetails> userDetails = new ArrayList<UserDetails>();
+
+//    public Collection<UserDetails> getUserDetails() {
+//        return userDetails;
+//    }
+//
+//    public void setUserDetails(Collection<UserDetails> userDetails) {
+//        this.userDetails = userDetails;
+//    }
 
     public int getVehicleId() {
         return vehicleId;

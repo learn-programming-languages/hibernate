@@ -21,8 +21,8 @@ public class HibernateTest {
 
         user.getVehicle().add(vehicle1);
         user.getVehicle().add(vehicle2);
-        vehicle1.getUserDetails().add(user);
-        vehicle2.getUserDetails().add(user);
+//        vehicle1.getUserDetails().add(user);
+//        vehicle2.getUserDetails().add(user);
 
         //read configuration file
         try{
