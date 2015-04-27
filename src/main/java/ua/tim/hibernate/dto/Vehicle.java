@@ -1,6 +1,8 @@
 package ua.tim.hibernate.dto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by timofiybilyi on 4/27/15.
@@ -12,15 +14,15 @@ public class Vehicle {
     @GeneratedValue
     private int vehicleId;
     private String vehicleName;
-    @ManyToOne
-    @JoinColumn (name = "USER_ID")
-    private UserDetails userDetails;
 
-    public UserDetails getUserDetails() {
+    @ManyToMany
+    private Collection<UserDetails> userDetails = new ArrayList<UserDetails>();
+
+    public Collection<UserDetails> getUserDetails() {
         return userDetails;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
+    public void setUserDetails(Collection<UserDetails> userDetails) {
         this.userDetails = userDetails;
     }
 
