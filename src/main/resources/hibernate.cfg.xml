@@ -20,6 +20,8 @@
         <!--Names the annotated entity classes-->
         <mapping class="ua.tim.hibernate.dto.UserDetails" />
         <mapping class="ua.tim.hibernate.dto.Vehicle" />
+        <mapping class="ua.tim.hibernate.dto.TwoWheeler" />
+        <mapping class="ua.tim.hibernate.dto.FourWheeler" />
 
     </session-factory>
 </hibernate-configuration>

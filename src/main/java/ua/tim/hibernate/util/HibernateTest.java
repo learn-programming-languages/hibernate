@@ -3,7 +3,8 @@ package ua.tim.hibernate.util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ua.tim.hibernate.dto.UserDetails;
+import ua.tim.hibernate.dto.FourWheeler;
+import ua.tim.hibernate.dto.TwoWheeler;
 import ua.tim.hibernate.dto.Vehicle;
 
 /**
@@ -11,18 +12,18 @@ import ua.tim.hibernate.dto.Vehicle;
  */
 public class HibernateTest {
     public static void main(String[] args) {
-        UserDetails user = new UserDetails();
-        user.setUserName("First User");
 
-        Vehicle vehicle1 = new Vehicle();
-        vehicle1.setVehicleName("car1");
-        Vehicle vehicle2 = new Vehicle();
-        vehicle2.setVehicleName("car2");
+        Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleName("vehicle");
 
-        user.getVehicle().add(vehicle1);
-        user.getVehicle().add(vehicle2);
-//        vehicle1.getUserDetails().add(user);
-//        vehicle2.getUserDetails().add(user);
+        TwoWheeler bike = new TwoWheeler();
+        bike.setVehicleName("HONDA VTR 250");
+        bike.setSteerHandle("street handle");
+
+        FourWheeler car = new FourWheeler();
+        car.setVehicleName("Nissan z30");
+        car.setSteeringWhill("streeting wheel");
+
 
         //read configuration file
         try{
@@ -30,7 +31,9 @@ public class HibernateTest {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
 
-            session.persist(user);
+            session.save(vehicle);
+            session.save(car);
+            session.save(bike);
 
             session.getTransaction().commit();
             session.close();
