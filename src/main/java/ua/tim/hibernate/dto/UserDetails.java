@@ -16,20 +16,10 @@ public class UserDetails {
     private int userId;
     private String userName;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
-
     public int getUserId() {
         return userId;
     }
 
-    public Collection<Vehicle> getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Collection<Vehicle> vehicles) {
-        this.vehicle = vehicles;
-    }
 
     public void setUserId(int userId) {
         this.userId = userId;

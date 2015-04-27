@@ -3,9 +3,7 @@ package ua.tim.hibernate.util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ua.tim.hibernate.dto.FourWheeler;
-import ua.tim.hibernate.dto.TwoWheeler;
-import ua.tim.hibernate.dto.Vehicle;
+import ua.tim.hibernate.dto.UserDetails;
 
 /**
  * Created by timofiybilyi on 4/26/15.
@@ -13,16 +11,7 @@ import ua.tim.hibernate.dto.Vehicle;
 public class HibernateTest {
     public static void main(String[] args) {
 
-        Vehicle vehicle = new Vehicle();
-        vehicle.setVehicleName("vehicle");
 
-        TwoWheeler bike = new TwoWheeler();
-        bike.setVehicleName("HONDA VTR 250");
-        bike.setSteerHandle("street handle");
-
-        FourWheeler car = new FourWheeler();
-        car.setVehicleName("Nissan z30");
-        car.setSteeringWhill("streeting wheel");
 
 
         //read configuration file
@@ -30,11 +19,17 @@ public class HibernateTest {
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
+//            for (int i = 0 ;i < 10; i++) {
+//                UserDetails userDetails = new UserDetails();
+//                userDetails.setUserName("User #" + i);
+//                session.save(userDetails);
+//            }
+            UserDetails userDetails = (UserDetails)session.get(UserDetails.class, 1);
+//            System.out.println(userDetails.getUserName());
+            userDetails.setUserName("UPDATE");
+            session.update(userDetails);
 
-            session.save(vehicle);
-            session.save(car);
-            session.save(bike);
-
+            session.delete(userDetails);
             session.getTransaction().commit();
             session.close();
         }
