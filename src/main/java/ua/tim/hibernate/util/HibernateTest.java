@@ -20,7 +20,9 @@ public class HibernateTest {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
             UserDetails user = new UserDetails();
+            user.setUserName("NEW OBJECT (PERSIST)");
             session.save(user);
+
             UserDetails userDetails = (UserDetails)session.get(UserDetails.class, 1);
 
             session.getTransaction().commit();
@@ -31,6 +33,8 @@ public class HibernateTest {
             session = sessionFactory.openSession();
             session.beginTransaction();
 
+            //commit for see result
+            userDetails.setUserName("DETACHED OBJECT USE SELECT BEFORE UPDATE");
             session.update(userDetails);
 
             session.getTransaction().commit();

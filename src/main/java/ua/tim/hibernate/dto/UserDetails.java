@@ -1,14 +1,14 @@
 package ua.tim.hibernate.dto;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 /**
  * Created by timofiybilyi on 4/25/15.
  */
+
 @Entity
+
 @Table(name = "USER_DETAILS")
 public class UserDetails {
     @Id

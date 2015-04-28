@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 /**
  * Created by timofiybilyi on 4/27/15.
  */
-@Entity
+//@Entity
 public class TwoWheeler extends Vehicle{
 
     private String steerHandle;
