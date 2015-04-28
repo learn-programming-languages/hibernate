@@ -1,5 +1,7 @@
 package ua.tim.hibernate.dto;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 
 
@@ -9,7 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "UserDetails.byId", query = "from UserDetails where userId = ?")
-@NamedNativeQuery(name = "UserDetails.byName", query = "select * from user_details where username = ?",resultClass = UserDetails.class)
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Table(name = "USER_DETAILS")
 public class UserDetails {
     @Id

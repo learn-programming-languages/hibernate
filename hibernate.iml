@@ -35,5 +35,7 @@
     <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: postgresql:postgresql:9.1-901-1.jdbc4" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:3.6.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache-core:2.4.1" level="project" />
   </component>
 </module>
