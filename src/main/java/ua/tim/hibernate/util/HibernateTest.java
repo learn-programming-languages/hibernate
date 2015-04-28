@@ -1,13 +1,9 @@
 package ua.tim.hibernate.util;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Projections;
 import ua.tim.hibernate.dto.UserDetails;
-
-import java.util.List;
 
 /**
  * Created by timofiybilyi on 4/26/15.
@@ -24,34 +20,27 @@ public class HibernateTest {
             Session session = sessionFactory.openSession();
             session.beginTransaction();
 
-            for (int i = 0; i < 10; i++){
-                UserDetails user = new UserDetails();
-                user.setUserName("user details name: " + i);
-                session.save(user);
-            }
+            //demo session cache
+            //first select write to session cache
+            UserDetails user1 = (UserDetails)session.get(UserDetails.class, 1);
+
+            //second select use session cache get from cache
+            UserDetails user2 = (UserDetails)session.get(UserDetails.class, 1);
 
             session.getTransaction().commit();
             session.close();
 
 
-
+            //another session
             session = sessionFactory.openSession();
             session.beginTransaction();
 
-            //Criteria
-            Criteria criteria = session.createCriteria(UserDetails.class)
-                    .setProjection(Projections.property("userName"));
-                    .setProjection(Projections.count("userName"));
-
-
-            List<UserDetails> listOfRowFromUserDetails = criteria.list();
-
+            //get first select writhe to session cache
+            UserDetails user3 = (UserDetails)session.get(UserDetails.class, 1);
 
             session.getTransaction().commit();
             session.close();
-            for (UserDetails user: listOfRowFromUserDetails){
-                System.out.println(user.getUserName());
-            }
+
 
         }
         catch (Throwable ex) {
