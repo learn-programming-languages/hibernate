@@ -41,7 +41,15 @@ public class HibernateTest {
             //Query query = session.createQuery("from UserDetails ");
 
             //create query object from class Userdetails where property userId > 5
-            Query query = session.createQuery("from UserDetails where userId > 5");
+            //Query query = session.createQuery("from UserDetails where userId > 5");
+
+
+            Query query = session.createQuery("from UserDetails");
+            //pagination
+            //start from (offcet??)
+            query.setFirstResult(0);
+            //limit??
+            query.setMaxResults(3);
 
             //get all records from query (list)
             List<UserDetails> listOfRowFromUserDetails = query.list();
