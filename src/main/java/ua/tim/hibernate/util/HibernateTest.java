@@ -52,10 +52,9 @@ public class HibernateTest {
 //            query.setInteger("userId", Integer.parseInt(uId));
 //            query.setString("userName", uName);
 
-            //use namedQuery HQL
-            Query query = session.getNamedQuery("UserDetails.byId");
-            query.setInteger(0, 2);
-
+            //use namedQuery pure sql
+            Query query = session.getNamedQuery("UserDetails.byName");
+            query.setString(0, "user details name: 6");
 
             //pagination
             //start from (offcet??)
