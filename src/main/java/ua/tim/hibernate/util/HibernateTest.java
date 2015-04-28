@@ -44,23 +44,29 @@ public class HibernateTest {
             //Query query = session.createQuery("from UserDetails where userId > 5");
 
 
-            Query query = session.createQuery("select userName from UserDetails");
+            String uId = "3";
+            String userName = "user details name: 9";
+            //placeholders
+            Query query = session.createQuery("from UserDetails where userId > ? and userName = ?");
+            query.setInteger(0, Integer.parseInt(uId));
+            query.setString(1, userName);
+
             //pagination
             //start from (offcet??)
             //2 page (page * record on one page)
-            query.setFirstResult((0+1)*3);
+            //query.setFirstResult((0+1)*3);
             //limit??
-            query.setMaxResults(3);
+            //query.setMaxResults(3);
 
             //get all records from query (list)
-            List<String> listOfRowFromUserDetails = query.list();
+            List<UserDetails> listOfRowFromUserDetails = query.list();
 
 
             session.getTransaction().commit();
             session.close();
 
-            for (String userName: listOfRowFromUserDetails){
-                System.out.println(userName);
+            for (UserDetails user: listOfRowFromUserDetails){
+                System.out.println(user.getUserName());
             }
 
         }
