@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import ua.tim.hibernate.dto.UserDetails;
 
 import java.util.List;
@@ -40,7 +40,8 @@ public class HibernateTest {
 
             //Criteria
             Criteria criteria = session.createCriteria(UserDetails.class)
-                    .addOrder(Order.desc("userId"));
+                    .setProjection(Projections.property("userName"));
+                    .setProjection(Projections.count("userName"));
 
 
             List<UserDetails> listOfRowFromUserDetails = criteria.list();
