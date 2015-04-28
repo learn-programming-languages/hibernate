@@ -45,11 +45,12 @@ public class HibernateTest {
 
 
             String uId = "3";
-            String userName = "user details name: 9";
+            String uName = "user details name: 9";
             //placeholders
-            Query query = session.createQuery("from UserDetails where userId > ? and userName = ?");
-            query.setInteger(0, Integer.parseInt(uId));
-            query.setString(1, userName);
+            Query query = session.createQuery("from UserDetails where userId > :userId and userName = :userName");
+
+            query.setInteger("userId", Integer.parseInt(uId));
+            query.setString("userName", uName);
 
             //pagination
             //start from (offcet??)
@@ -64,7 +65,6 @@ public class HibernateTest {
 
             session.getTransaction().commit();
             session.close();
-
             for (UserDetails user: listOfRowFromUserDetails){
                 System.out.println(user.getUserName());
             }
