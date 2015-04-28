@@ -47,10 +47,15 @@ public class HibernateTest {
             String uId = "3";
             String uName = "user details name: 9";
             //placeholders
-            Query query = session.createQuery("from UserDetails where userId > :userId and userName = :userName");
+//            Query query = session.createQuery("from UserDetails where userId > :userId and userName = :userName");
+//
+//            query.setInteger("userId", Integer.parseInt(uId));
+//            query.setString("userName", uName);
 
-            query.setInteger("userId", Integer.parseInt(uId));
-            query.setString("userName", uName);
+            //use namedQuery HQL
+            Query query = session.getNamedQuery("UserDetails.byId");
+            query.setInteger(0, 2);
+
 
             //pagination
             //start from (offcet??)

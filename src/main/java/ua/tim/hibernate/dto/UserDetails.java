@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 
 @Entity
-
+@NamedQuery(name = "UserDetails.byId", query = "from UserDetails where userId = ?")
 @Table(name = "USER_DETAILS")
 public class UserDetails {
     @Id
