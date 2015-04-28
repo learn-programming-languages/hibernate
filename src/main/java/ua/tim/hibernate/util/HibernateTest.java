@@ -1,9 +1,12 @@
 package ua.tim.hibernate.util;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ua.tim.hibernate.dto.UserDetails;
+
+import java.util.List;
 
 /**
  * Created by timofiybilyi on 4/26/15.
@@ -19,27 +22,25 @@ public class HibernateTest {
             SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory();
             Session session = sessionFactory.openSession();
             session.beginTransaction();
-
-            //demo session cache
-            //first select write to session cache
-            UserDetails user1 = (UserDetails)session.get(UserDetails.class, 1);
-
-            //second select use session cache get from cache
-            UserDetails user2 = (UserDetails)session.get(UserDetails.class, 1);
+            Query query = session.createQuery("from UserDetails where userId = 1");
+            query.setCacheable(true);
+            List<UserDetails> userList = query.list();
 
             session.getTransaction().commit();
             session.close();
 
 
-            //another session
-            session = sessionFactory.openSession();
-            session.beginTransaction();
+            //two session
+            Session session2 = sessionFactory.openSession();
+            session2.beginTransaction();
 
-            //get first select writhe to session cache
-            UserDetails user3 = (UserDetails)session.get(UserDetails.class, 1);
+            Query query2 = session2.createQuery("from UserDetails where userId = 1");
+            query2.setCacheable(true);
+            List<UserDetails> userList2 = query2.list();
 
-            session.getTransaction().commit();
-            session.close();
+
+            session2.getTransaction().commit();
+            session2.close();
 
 
         }

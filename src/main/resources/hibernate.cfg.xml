@@ -11,8 +11,10 @@
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
-        <!--enable cache 2 lelve-->
+        <!--enable cache 2 lelve and query cache-->
         <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+        <property name="hibernate.cache.use_query_cache">true</property>
+
         <property name="hibernate.cache.use_second_level_cache">true</property>
         <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 
