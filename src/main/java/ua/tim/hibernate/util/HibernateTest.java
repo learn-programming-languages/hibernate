@@ -41,7 +41,9 @@ public class HibernateTest {
             //Criteria
             Criteria criteria = session.createCriteria(UserDetails.class);
             //criteria.add(Restrictions.eq("userName", "user details name: 6"));
-            criteria.add(Restrictions.eq("userId", 7));
+            //criteria.add(Restrictions.eq("userId", 7));
+            //criteria.add(Restrictions.between("userId", 0, 9));
+            criteria.add(Restrictions.or(Restrictions.between("userId",0,3),Restrictions.between("userId",3,6)));
 
             List<UserDetails> listOfRowFromUserDetails = criteria.list();
 
