@@ -1,9 +1,10 @@
 package ua.tim.hibernate.util;
 
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import ua.tim.hibernate.dto.UserDetails;
 
 import java.util.List;
@@ -37,34 +38,12 @@ public class HibernateTest {
             session = sessionFactory.openSession();
             session.beginTransaction();
 
-            //create query object from class Userdetails
-            //Query query = session.createQuery("from UserDetails ");
+            //Criteria
+            Criteria criteria = session.createCriteria(UserDetails.class);
+            //criteria.add(Restrictions.eq("userName", "user details name: 6"));
+            criteria.add(Restrictions.eq("userId", 7));
 
-            //create query object from class Userdetails where property userId > 5
-            //Query query = session.createQuery("from UserDetails where userId > 5");
-
-
-            String uId = "3";
-            String uName = "user details name: 9";
-            //placeholders
-//            Query query = session.createQuery("from UserDetails where userId > :userId and userName = :userName");
-//
-//            query.setInteger("userId", Integer.parseInt(uId));
-//            query.setString("userName", uName);
-
-            //use namedQuery pure sql
-            Query query = session.getNamedQuery("UserDetails.byName");
-            query.setString(0, "user details name: 6");
-
-            //pagination
-            //start from (offcet??)
-            //2 page (page * record on one page)
-            //query.setFirstResult((0+1)*3);
-            //limit??
-            //query.setMaxResults(3);
-
-            //get all records from query (list)
-            List<UserDetails> listOfRowFromUserDetails = query.list();
+            List<UserDetails> listOfRowFromUserDetails = criteria.list();
 
 
             session.getTransaction().commit();
