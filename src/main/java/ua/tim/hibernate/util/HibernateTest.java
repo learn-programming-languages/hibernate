@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Order;
 import ua.tim.hibernate.dto.UserDetails;
 
 import java.util.List;
@@ -39,11 +39,9 @@ public class HibernateTest {
             session.beginTransaction();
 
             //Criteria
-            Criteria criteria = session.createCriteria(UserDetails.class);
-            //criteria.add(Restrictions.eq("userName", "user details name: 6"));
-            //criteria.add(Restrictions.eq("userId", 7));
-            //criteria.add(Restrictions.between("userId", 0, 9));
-            criteria.add(Restrictions.or(Restrictions.between("userId",0,3),Restrictions.between("userId",3,6)));
+            Criteria criteria = session.createCriteria(UserDetails.class)
+                    .addOrder(Order.desc("userId"));
+
 
             List<UserDetails> listOfRowFromUserDetails = criteria.list();
 
