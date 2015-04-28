@@ -16,7 +16,7 @@
         <property name="show_sql">true</property>
 
         <!--drop and recreate on sturtup database schema-->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!--Names the annotated entity classes-->
         <mapping class="ua.tim.hibernate.dto.UserDetails" />
         <mapping class="ua.tim.hibernate.dto.Vehicle" />
